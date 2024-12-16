@@ -16,9 +16,9 @@ const FormContainer = styled.div`
 `;
 
 const Input = styled.input`
-  width: 100%;
+  width: 80%;
   padding: 10px;
-  margin: 10px 0;
+  margin: 5px 0px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 16px;
@@ -69,6 +69,7 @@ function Form() {
     name: "",
     email: "",
     password: "",
+    confirmpassword:""
   });
   const [editProfile, setEditProfile] = useState(null);
   const [errors, setErrors] = useState({});
@@ -98,9 +99,14 @@ function Form() {
       newErrors.email = "Invalid email format.";
     else if (emailExists)
       newErrors.email = "Email already exists for this name.";
+    
+
+    
 
     if (!profile.password.trim())
       newErrors.password = "Password is required.";
+    if(profile.password!=confirmpassword)
+      newErrors.password ="Password doesn't Match";
     else if (profile.password.length < 6)
       newErrors.password = "Password must be at least 6 characters.";
 
@@ -115,7 +121,7 @@ function Form() {
     try {
       const response = await axios.post(API_URL, newProfile);
       setProfile([...Profile, response.data]);
-      setNewProfile({ name: "", email: "", password: "" });
+      setNewProfile({ name: "", email: "", password: "" , confirmpassword:""});
       setErrors({});
     } catch (error) {
       console.error("Error adding Profile", error);
@@ -171,6 +177,12 @@ function Form() {
           onChange={(e) => setNewProfile({ ...newProfile, password: e.target.value })}
           placeholder="Password"
         />
+         <Input
+            type = "password"
+            value={newProfile.confirmpassword}
+            onChange={(e) =>  setNewProfile({...newProfile, confirmpassword: e.target.value})}
+            placeholder = "confirmpassword"
+            />
         {errors.password && <ErrorText>{errors.password}</ErrorText>}
 
         <Button type="submit">Sign-Up</Button>
@@ -198,13 +210,16 @@ function Form() {
               onChange={(e) => setEditProfile({ ...editProfile, password: e.target.value })}
               placeholder="Password"
             />
+           
+            
+
             <Button type="submit">Update</Button>
             <Button type="button" onClick={() => setEditProfile(null)}>Cancel</Button>
           </form>
         </div>
       )}
 
-      <ProfileList>
+      {/* <ProfileList>
         {Array.isArray(Profile) && Profile.map((profile) => (
           <ProfileItem key={profile.id}>
             <div>
@@ -216,7 +231,7 @@ function Form() {
             </div>
           </ProfileItem>
         ))}
-      </ProfileList>
+      </ProfileList> */}
     </FormContainer>
   );
 }

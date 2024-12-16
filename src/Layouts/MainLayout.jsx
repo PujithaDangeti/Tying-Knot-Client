@@ -1,17 +1,18 @@
 import React from "react";
-import Header from "../assets/Components/Header";
-import Footer from "../assets/Components/footer";
-import Main from "../assets/Components/Main";
-import LandingPage from "../assets/Components/Landing";
+import Header from "../Components/Header";
+import Footer from "../Components/footer";
+import LandingPage from "../Components/Landing";
+//import Dashboard from "../Pages/Dashboard";
+
 
 
 function MainLayout({ children }) {
   return (
     <>
       <Header />
-      <Main/>
-      <LandingPage/>
+      
       <main>{children}</main>
+      <LandingPage/>
       <Footer />
     </>
   );

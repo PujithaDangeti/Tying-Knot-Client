@@ -1,9 +1,68 @@
+// import axios from 'axios';
+// import { useState } from 'react';
+
+// let API_URL = "http://localhost:3000/Profiles";
+
+// function Login() {
+//     const [loginData, setLoginData] = useState({
+//         email: "",
+//         password: ""
+//     });
+
+//     const [message, setMessage] = useState("");
+
+//     const handleLogin = async (event) => {
+//         event.preventDefault();
+//         try {
+//             const response = await axios.get(API_URL, loginData);
+//             if (response.status === 200) {
+//                 setMessage("Login Successful!");
+//                 // You can save the token or user details here
+//                 console.log(response.data);
+//             } else {
+//                 setMessage("Invalid credentials. Please try again.");
+//             }
+//         } catch (error) {
+//             console.log("Error during login", error);
+//             setMessage("Error occurred during login. Please try again later.");
+//         }
+//     };
+
+//     return (
+//         <>
+//             <div id="login-form">
+//                 <form onSubmit={handleLogin}>
+//                     <input
+//                         type="email"
+//                         value={loginData.email}
+//                         onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+//                         placeholder="Email"
+//                         required
+//                     />
+//                     <input
+//                         type="password"
+//                         value={loginData.password}
+//                         onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+//                         placeholder="Password"
+//                         required
+//                     />
+//                     <button type="submit">Login</button>
+//                 </form>
+//                 {message && <p>{message}</p>}
+//             </div>
+//         </>
+//     );
+// }
+// export default Login;
+
 import axios from 'axios';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const API_URL = "http://localhost:3000/Profiles";
 
+// Styled components
 const LoginContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -13,14 +72,7 @@ const LoginContainer = styled.div`
   background-color: #f4f4f4;
 `;
 
-const Header = styled.h1`
-  font-size: 2rem;
-  color: #333333;
-  margin-bottom: 1.5rem;
-  text-align: center;
-`;
-
-const LoginFormStyled = styled.form`
+const LoginForm = styled.form`
   background: #ffffff;
   padding: 2rem;
   border-radius: 8px;
@@ -72,53 +124,63 @@ const Message = styled.p`
   text-align: center;
 `;
 
-function LoginForm() {
-  const [loginData, setLoginData] = useState({
-    email: "",
-    password: ""
-  });
+const Header = styled.h2`
+  margin-bottom: 1.5rem;
+  color: #333;
+  text-align: center;
+`;
 
-  const [message, setMessage] = useState("");
+// Login Component
+function Login() {
+    const [loginData, setLoginData] = useState({
+        email: "",
+        password: ""
+    });
 
-  const handleLogin = async (event) => {
-    event.preventDefault();
-    try {
-      const response = await axios.get(API_URL, loginData);
-      if (response.status === 200) {
-        setMessage("Login Successful!");
-        console.log(response.data);
-      } else {
-        setMessage("Invalid credentials. Please try again.");
-      }
-    } catch (error) {
-      console.log("Error during login", error);
-      setMessage("Error occurred during login. Please try again later.");
-    }
-  };
+    const [message, setMessage] = useState("");
+    const navigate = useNavigate(); // Initialize navigate
 
-  return (
-    <LoginContainer>
-      <Header>Login</Header>
-      <LoginFormStyled onSubmit={handleLogin}>
-        <Input
-          type="email"
-          value={loginData.email}
-          onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
-          placeholder="Email"
-          required
-        />
-        <Input
-          type="password"
-          value={loginData.password}
-          onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
-          placeholder="Password"
-          required
-        />
-        <Button type="submit">Login</Button>
-      </LoginFormStyled>
-      {message && <Message success={message === "Login Successful!"}>{message}</Message>}
-    </LoginContainer>
-  );
+
+    const handleLogin = async (event) => {
+        event.preventDefault();
+        try {
+            const response = await axios.get(API_URL, loginData);
+            if (response.status === 200) {
+                setMessage("Login Successful!");
+                console.log(response.data);
+                navigate("/Dashboard")
+            } else {
+                setMessage("Invalid credentials. Please try again.");
+            }
+        } catch (error) {
+            console.log("Error during login", error);
+            setMessage("Error occurred during login. Please try again later.");
+        }
+    };
+
+    return (
+        <LoginContainer>
+            <Header>Login</Header>
+            <LoginForm onSubmit={handleLogin}>
+                <Input
+                    type="email"
+                    value={loginData.email}
+                    onChange={(e) => setLoginData({ ...loginData, email: e.target.value })}
+                    placeholder="Email"
+                    required
+                />
+                <Input
+                    type="password"
+                    value={loginData.password}
+                    onChange={(e) => setLoginData({ ...loginData, password: e.target.value })}
+                    placeholder="Password"
+                    required
+                />
+                <Button type="submit">Login</Button>
+            </LoginForm>
+            {message && <Message success={message === "Login Successful!"}>{message}</Message>}
+        </LoginContainer>
+    );
 }
 
-export default LoginForm;
+export default Login;
