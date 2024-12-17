@@ -1,78 +1,104 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import styled from 'styled-components';
+
+
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import styled from "styled-components";
+
 
 const API_URL = "http://localhost:3000/Profiles";
 
 // Styled Components
-const FormContainer = styled.div`
+const Container = styled.div`
+  width: 100%;
   max-width: 500px;
   margin: 0 auto;
   padding: 20px;
-  border: 1px solid #ddd;
+`;
+
+const FieldSet = styled.fieldset`
+  border: 1px solid #ccc;
+  padding: 20px;
   border-radius: 8px;
-  background-color: #f9f9f9;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+`;
+
+const Legend = styled.legend`
+  font-size: 1.5em;
+  margin-bottom: 10px;
+`;
+
+const Field = styled.div`
+  margin-bottom: 15px;
+`;
+
+const Label = styled.label`
+  font-size: 1em;
+  display: block;
+  margin-bottom: 5px;
 `;
 
 const Input = styled.input`
-  width: 80%;
+  width: 90%;
   padding: 10px;
-  margin: 5px 0px;
+  font-size: 1em;
   border: 1px solid #ccc;
   border-radius: 4px;
-  font-size: 16px;
+`;
+
+const Buttons = styled.div`
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
 `;
 
 const Button = styled.button`
   padding: 10px 20px;
-  margin: 10px 5px;
-  background-color: #007bff;
+  background-color: #4caf50;
   color: white;
   border: none;
   border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 1em;
+  
   &:hover {
-    background-color: #0056b3;
+    background-color: #45a049;
   }
+
   &:disabled {
-    background-color: #cccccc;
+    background-color: #ddd;
     cursor: not-allowed;
   }
 `;
 
-const ErrorText = styled.p`
+const Error = styled.span`
   color: red;
-  font-size: 14px;
-  margin: 0;
+  font-size: 0.9em;
+  margin-top: 5px;
+  display: block;
 `;
 
-const ProfileList = styled.div`
-  margin: 20px 0;
-`;
-
-const ProfileItem = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+const SuccessMessage = styled.div`
+  margin-top: 20px;
+  background-color: #4caf50;
+  color: white;
   padding: 10px;
-  border: 1px solid #ddd;
   border-radius: 4px;
-  margin: 10px 0;
-  background-color: #fff;
+  text-align: center;
+  font-size: 1.2em;
 `;
 
 function Form() {
-  const [Profile, setProfile] = useState([]); // Ensure Profile is initialized as an array
+  const [Profile, setProfile] = useState([]);
   const [newProfile, setNewProfile] = useState({
     name: "",
     email: "",
     password: "",
-    confirmpassword:""
+    confirmpassword: "",
   });
   const [editProfile, setEditProfile] = useState(null);
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(""); // State for success message
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchData();
@@ -99,14 +125,10 @@ function Form() {
       newErrors.email = "Invalid email format.";
     else if (emailExists)
       newErrors.email = "Email already exists for this name.";
-    
 
-    
-
-    if (!profile.password.trim())
-      newErrors.password = "Password is required.";
-    if(profile.password!=confirmpassword)
-      newErrors.password ="Password doesn't Match";
+    if (!profile.password.trim()) newErrors.password = "Password is required.";
+    if (profile.password !== profile.confirmpassword)
+      newErrors.password = "Password doesn't match.";
     else if (profile.password.length < 6)
       newErrors.password = "Password must be at least 6 characters.";
 
@@ -121,8 +143,13 @@ function Form() {
     try {
       const response = await axios.post(API_URL, newProfile);
       setProfile([...Profile, response.data]);
-      setNewProfile({ name: "", email: "", password: "" , confirmpassword:""});
+      setNewProfile({ name: "", email: "", password: "", confirmpassword: "" });
       setErrors({});
+      setSuccessMessage("Sign-up successful! Redirecting to login...");
+
+      setTimeout(() => {
+        navigate("/Login");
+      }, 2000);
     } catch (error) {
       console.error("Error adding Profile", error);
     }
@@ -152,87 +179,101 @@ function Form() {
   };
 
   return (
-    <FormContainer>
+    <Container>
       <h2>Sign-Up Form</h2>
       <form onSubmit={addProfile}>
-        <Input
-          type="text"
-          value={newProfile.name}
-          onChange={(e) => setNewProfile({ ...newProfile, name: e.target.value })}
-          placeholder="Name"
-        />
-        {errors.name && <ErrorText>{errors.name}</ErrorText>}
+        <FieldSet>
+          <Legend>Personal Details</Legend>
 
-        <Input
-          type="email"
-          value={newProfile.email}
-          onChange={(e) => setNewProfile({ ...newProfile, email: e.target.value })}
-          placeholder="Email"
-        />
-        {errors.email && <ErrorText>{errors.email}</ErrorText>}
-
-        <Input
-          type="password"
-          value={newProfile.password}
-          onChange={(e) => setNewProfile({ ...newProfile, password: e.target.value })}
-          placeholder="Password"
-        />
-         <Input
-            type = "password"
-            value={newProfile.confirmpassword}
-            onChange={(e) =>  setNewProfile({...newProfile, confirmpassword: e.target.value})}
-            placeholder = "confirmpassword"
+          <Field>
+            <Label>Name:</Label>
+            <Input
+              type="text"
+              value={newProfile.name}
+              onChange={(e) => setNewProfile({ ...newProfile, name: e.target.value })}
             />
-        {errors.password && <ErrorText>{errors.password}</ErrorText>}
+            {errors.name && <Error>{errors.name}</Error>}
+          </Field>
 
-        <Button type="submit">Sign-Up</Button>
+          <Field>
+            <Label>Email:</Label>
+            <Input
+              type="email"
+              value={newProfile.email}
+              onChange={(e) => setNewProfile({ ...newProfile, email: e.target.value })}
+            />
+            {errors.email && <Error>{errors.email}</Error>}
+          </Field>
+
+          <Field>
+            <Label>Password:</Label>
+            <Input
+              type="password"
+              value={newProfile.password}
+              onChange={(e) => setNewProfile({ ...newProfile, password: e.target.value })}
+            />
+            {errors.password && <Error>{errors.password}</Error>}
+          </Field>
+
+          <Field>
+            <Label>Confirm Password:</Label>
+            <Input
+              type="password"
+              value={newProfile.confirmpassword}
+              onChange={(e) => setNewProfile({ ...newProfile, confirmpassword: e.target.value })}
+            />
+            {errors.password && <Error>{errors.password}</Error>}
+          </Field>
+
+          <Buttons>
+            <Button type="submit">Sign-Up</Button>
+          </Buttons>
+        </FieldSet>
       </form>
+
+      {successMessage && <SuccessMessage>{successMessage}</SuccessMessage>}
 
       {editProfile && (
         <div>
           <h3>Edit Profile</h3>
           <form onSubmit={updateProfile}>
-            <Input
-              type="text"
-              value={editProfile.name}
-              onChange={(e) => setEditProfile({ ...editProfile, name: e.target.value })}
-              placeholder="Name"
-            />
-            <Input
-              type="email"
-              value={editProfile.email}
-              onChange={(e) => setEditProfile({ ...editProfile, email: e.target.value })}
-              placeholder="Email"
-            />
-            <Input
-              type="password"
-              value={editProfile.password}
-              onChange={(e) => setEditProfile({ ...editProfile, password: e.target.value })}
-              placeholder="Password"
-            />
-           
-            
-
-            <Button type="submit">Update</Button>
-            <Button type="button" onClick={() => setEditProfile(null)}>Cancel</Button>
+            <FieldSet>
+              <Legend>Edit Personal Details</Legend>
+              <Field>
+                <Label>Name:</Label>
+                <Input
+                  type="text"
+                  value={editProfile.name}
+                  onChange={(e) => setEditProfile({ ...editProfile, name: e.target.value })}
+                />
+              </Field>
+              <Field>
+                <Label>Email:</Label>
+                <Input
+                  type="email"
+                  value={editProfile.email}
+                  onChange={(e) => setEditProfile({ ...editProfile, email: e.target.value })}
+                />
+              </Field>
+              <Field>
+                <Label>Password:</Label>
+                <Input
+                  type="password"
+                  value={editProfile.password}
+                  onChange={(e) => setEditProfile({ ...editProfile, password: e.target.value })}
+                />
+              </Field>
+              <Buttons>
+                <Button type="submit">Update</Button>
+                <Button type="button" onClick={() => setEditProfile(null)}>
+                  Cancel
+                </Button>
+              </Buttons>
+            </FieldSet>
           </form>
         </div>
       )}
-
-      {/* <ProfileList>
-        {Array.isArray(Profile) && Profile.map((profile) => (
-          <ProfileItem key={profile.id}>
-            <div>
-              {profile.name} - {profile.email}
-            </div>
-            <div>
-              <Button onClick={() => setEditProfile(profile)}>Edit</Button>
-              <Button onClick={() => deleteProfile(profile.id)}>Delete</Button>
-            </div>
-          </ProfileItem>
-        ))}
-      </ProfileList> */}
-    </FormContainer>
+    </Container>
   );
 }
 

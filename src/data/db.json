@@ -1,0 +1,28 @@
+{
+  "Profiles": [
+    {
+      "id": "d7fb"
+    },
+    {
+      "id": "feea",
+      "name": "Pujitha",
+      "email": "pujithadangeti@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": "b624",
+      "name": "sathvika",
+      "email": "sathvika@gmail.com",
+      "password": "sathvika",
+      "confirmpassword": "sathvika"
+    },
+    {
+      "id": "8fdd",
+      "name": "Supp",
+      "email": "sup@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    }
+  ]
+}
