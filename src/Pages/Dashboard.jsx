@@ -178,7 +178,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import { useAuth } from "../context/AuthContext";
-import bgImage from "../assets/bgImage.jpg"
+import bgImage from "../assets/bgImage.jpg";
 
 // Animations
 const fadeIn = keyframes`
@@ -190,11 +190,11 @@ const DashboardContainer = styled.div`
   height: 100vh;
   background: url(${bgImage}) center/cover no-repeat;
   display: flex;
-
   align-items: center;
   justify-content: center;
   color: white;
   text-align: center;
+  position: relative;
 `;
 
 const WelcomeMessage = styled.h1`
@@ -210,33 +210,10 @@ const SubText = styled.h3`
   animation: ${fadeIn} 1.5s ease-out;
 `;
 
-const ButtonContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  animation: ${fadeIn} 2s ease-out;
-`;
-
-const DashboardButton = styled.button`
-  margin: 0 10px;
-  padding: 1rem 2rem;
-  border: none;
-  background-color: #ff9800;
-  color: white;
-  font-size: 1.2rem;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s, background-color 0.3s;
-
-  &:hover {
-    transform: scale(1.05);
-    background-color: #e68900;
-  }
-`;
-
 const Sidebar = styled.div`
   position: fixed;
   top: 0;
-  left: ${(props) => (props.open ? "0" : "-500px")};
+  left: ${(props) => (props.open ? "0" : "-310px")}; /* Slide-in from the left */
   width: 250px;
   height: 100%;
   background-color: #333;
@@ -262,7 +239,7 @@ const SidebarLink = styled(NavLink)`
 const HamburgerMenu = styled.div`
   position: absolute;
   top: 1rem;
-  left: 1rem;
+  right: 1rem; /* Positioned on the right */
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -305,9 +282,9 @@ const Dashboard = () => {
     <>
       {/* Sidebar */}
       <Sidebar open={menuOpen}>
-        <SidebarLink to="/profile">Profile</SidebarLink>
-        <SidebarLink to="/subscription">Subscription</SidebarLink>
-        <SidebarLink to="/settings">Settings</SidebarLink>
+        <SidebarLink to="/profile">My Profile</SidebarLink>
+        <SidebarLink to="/supportchat">SupportChat</SidebarLink> 
+         <SidebarLink to="/settings">Settings</SidebarLink>
         <button
           onClick={handleLogout}
           style={{
@@ -333,25 +310,15 @@ const Dashboard = () => {
           <div></div>
         </HamburgerMenu>
 
-        {/* Welcome Message */}
-        <WelcomeMessage>Welcome to Tyingnots, {userEmail}!</WelcomeMessage>
-        <SubText>"Find Your Perfect Match, Start Your Forever Today!"</SubText>
-
-        {/* Navigation Buttons */}
-        <ButtonContainer>
-          <DashboardButton onClick={() => navigate("/profile")}>
-            Profile
-          </DashboardButton>
-          <DashboardButton onClick={() => navigate("/subscription")}>
-            Subscription
-          </DashboardButton>
-          <DashboardButton onClick={() => navigate("/settings")}>
-            Settings
-          </DashboardButton>
-        </ButtonContainer>
+        {/* Centered Welcome Message */}
+        <div>
+          <WelcomeMessage>Welcome to Tyingnots, {userEmail}!</WelcomeMessage>
+          <SubText>"Find Your Perfect Match, Start Your Forever Today!"</SubText>
+        </div>
       </DashboardContainer>
     </>
   );
 };
 
 export default Dashboard;
+

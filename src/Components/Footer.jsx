@@ -18,7 +18,7 @@ const FooterContainer = styled.div`
 `;
 
 const FooterSection = styled.div`
-  width: 35%; 
+  width: 25%; 
   margin: 0px; 
 
   @media (max-width: 768px) {
@@ -149,7 +149,7 @@ const Footer = () => {
           </SocialIcons>
         </FooterSection>
 
-        <FooterSection>
+        {/* <FooterSection>
           <SectionTitle>Subscribe to Our Newsletter</SectionTitle>
           <NewsletterSection>
             <form onSubmit={handleSubscribe}>
@@ -163,7 +163,7 @@ const Footer = () => {
               <NewsletterButton type="submit">Subscribe</NewsletterButton>
             </form>
           </NewsletterSection>
-        </FooterSection>
+        </FooterSection> */}
       </FooterContainer>
 
  

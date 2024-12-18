@@ -35,9 +35,14 @@ const Header1 = () => {
     <HeaderContainer>
       <Logo>TyingKnots</Logo>
       <NavLinks>
-        <NavLink to="/">Home</NavLink>
+      <NavLink to="/profilemanagement">ProfileManagement</NavLink>
+      <NavLink to="/searchmatchmaking">SearchMatchmaking</NavLink>
+       <NavLink to="/chat">Chat</NavLink>
+       {/* <NavLink to="/notifications">Notifications</NavLink>  */}
+      <NavLink to="/subscription">Subscription</NavLink>
+        {/* <NavLink to="/">Profiles</NavLink>
         <NavLink to="/about">About</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/contact">Contact</NavLink> */}
         {/* <NavLink to="/logout">Logout</NavLink> */}
       </NavLinks>
     </HeaderContainer>

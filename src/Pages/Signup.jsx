@@ -6,7 +6,7 @@ import axios from "axios";
 import styled from "styled-components";
 
 
-const API_URL = "http://localhost:3000/Profiles";
+const API_URL = "http://localhost:3000/MYProfile";
 
 // Styled Components
 const Container = styled.div`

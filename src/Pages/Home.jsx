@@ -1,9 +1,10 @@
 import React from "react";
 import styled from "styled-components";
+import image1 from "../assets/pic7.jpg"
 
 // Styled component for the header
 const HeaderContainer = styled.header`
-  background-image: url('https://t4.ftcdn.net/jpg/10/67/10/91/240_F_1067109176_1dc4k9JMAdiEpH60hVZgrZYJI9g8WsZS.jpg'); /* Replace with your image URL */
+  background-image: url(${image1}); /* Replace with your image URL */
   background-size: cover;
   background-position: center;
   text-align: center;

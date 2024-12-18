@@ -37,7 +37,7 @@ const StatItem = styled.div`
   transition: all 0.3s ease; /* Smooth transition for hover effects */
   
   &:hover {
-    background-color: #007bff; /* Change background color on hover */
+    background-color:  #ff7f50; /* Change background color on hover */
     transform: scale(1.05); /* Slightly scale the item */
     box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2); /* Enhance shadow effect */
   }
@@ -45,7 +45,7 @@ const StatItem = styled.div`
 
 const StatValue = styled.h2`
   font-size: 2rem;
-  color: #007bff;
+  color:  #ff7f50;
   margin: 0;
   
   ${StatItem}:hover & {

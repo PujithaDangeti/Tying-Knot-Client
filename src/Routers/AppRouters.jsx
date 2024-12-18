@@ -8,6 +8,11 @@ import Contact from "../Pages/Contact"
 import Login from "../Pages/Login";
 import Dashboard from "../Pages/Dashboard";
 import Profile from "../Pages/Profile";
+import ProfileManagement from "../Pages/ProfileManagement";
+import ProfileDetail from "../Pages/ProfileDetail";
+import Chat from "../Pages/Messaging";
+import Subscription from "../Pages/Subscription";
+import SearchMatchmaking from "../Pages/SearchMatchmaking";
 
 
 const AppRouter = () => {
@@ -24,6 +29,13 @@ const AppRouter = () => {
         <Route path="/contact" element={<Contact />} /> 
         <Route path= "/Dashboard" element = {<Dashboard/>}/>
         <Route path = "/profile" element = {<Profile/>}/>
+
+        <Route path = "/profilemanagement" element = {<ProfileManagement/>}/>
+        <Route path="/profile/:id" element={<ProfileDetail />} />
+         <Route path = "/chat" element = {<Chat/>}/>
+         <Route path = "/subscription" element = {<Subscription/>}/>
+         <Route path = "/searchmatchmaking" element ={<SearchMatchmaking />}/>
+
 
 
 

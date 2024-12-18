@@ -1,5 +1,5 @@
 {
-  "Profiles": [
+  "MYProfile": [
     {
       "id": "d7fb"
     },
@@ -21,6 +21,13 @@
       "id": "8fdd",
       "name": "Supp",
       "email": "sup@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": "acbe",
+      "name": "keer",
+      "email": "keer@gmail.com",
       "password": "123456",
       "confirmpassword": "123456"
     }

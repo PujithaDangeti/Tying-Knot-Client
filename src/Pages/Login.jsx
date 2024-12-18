@@ -170,7 +170,7 @@ import styled from 'styled-components';
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = "http://localhost:3000/Profiles";
+const API_URL = "http://localhost:3000/MYProfile";
 
 // Styled Components
 const LoginContainer = styled.div`
