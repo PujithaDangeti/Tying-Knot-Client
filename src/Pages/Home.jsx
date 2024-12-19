@@ -6,10 +6,12 @@ import image1 from "../assets/pic7.jpg"
 const HeaderContainer = styled.header`
   background-image: url(${image1}); /* Replace with your image URL */
   background-size: cover;
+  
   background-position: center;
   text-align: center;
   color: white;
   padding: 200px 20px;
+  
 `;
 
 const HeaderTitle = styled.h1`

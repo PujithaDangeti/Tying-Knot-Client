@@ -13,6 +13,8 @@ import ProfileDetail from "../Pages/ProfileDetail";
 import Chat from "../Pages/Messaging";
 import Subscription from "../Pages/Subscription";
 import SearchMatchmaking from "../Pages/SearchMatchmaking";
+import PaymentPage from "../Pages/PaymentPage";
+
 
 
 const AppRouter = () => {
@@ -29,12 +31,18 @@ const AppRouter = () => {
         <Route path="/contact" element={<Contact />} /> 
         <Route path= "/Dashboard" element = {<Dashboard/>}/>
         <Route path = "/profile" element = {<Profile/>}/>
+       
 
         <Route path = "/profilemanagement" element = {<ProfileManagement/>}/>
         <Route path="/profile/:id" element={<ProfileDetail />} />
-         <Route path = "/chat" element = {<Chat/>}/>
+        <Route path="/chat" element={<Chat/>}/>
+         
          <Route path = "/subscription" element = {<Subscription/>}/>
          <Route path = "/searchmatchmaking" element ={<SearchMatchmaking />}/>
+         <Route path = "/payment" element = {<PaymentPage />}/>
+
+
+         {/* <Route path = "/supportchat" element ={<SupportChat />}/> */}
 
 
 

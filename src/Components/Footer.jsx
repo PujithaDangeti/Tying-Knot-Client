@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const FooterWrapper = styled.footer`
   background-color: #ff7f50; 
   padding: 0;
+
   text-align: center;
   font-family: Arial, sans-serif;
 `;

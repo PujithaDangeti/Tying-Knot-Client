@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 // Styled Components
@@ -93,6 +94,7 @@ const SuccessMessage = styled.p`
 const Subscription = () => {
   const [activePlan, setActivePlan] = useState(null);
   const [successMessage, setSuccessMessage] = useState('');
+  const navigate = useNavigate();
 
   const plans = [
     {
@@ -129,7 +131,7 @@ const Subscription = () => {
 
       // Simulate payment gateway redirection
       setTimeout(() => {
-        window.location.href = 'https://your-payment-gateway-url.com'; // Replace with your payment gateway URL
+       navigate('/payment');
       }, 2000);
     } else {
       setSuccessMessage('Please select a subscription plan.');
