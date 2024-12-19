@@ -132,11 +132,11 @@ const Footer = () => {
         <FooterSection>
           <SectionTitle>Quick Links</SectionTitle>
           <LinksList>
-            <LinkItem><Link href="#about-us">About Us</Link></LinkItem>
-            <LinkItem><Link href="#services">Our Services</Link></LinkItem>
-            <LinkItem><Link href="#faq">FAQs</Link></LinkItem>
-            <LinkItem><Link href="#privacy-policy">Privacy Policy</Link></LinkItem>
-            <LinkItem><Link href="#terms">Terms of Service</Link></LinkItem>
+          <LinkItem><Link href="/about">About Us</Link></LinkItem>
+            <LinkItem><Link href="/OurService">Our Services</Link></LinkItem>
+            <LinkItem><Link href="/faqpage">FAQs</Link></LinkItem>
+            <LinkItem><Link href="/PrivacyPolicy">Privacy Policy</Link></LinkItem>
+            <LinkItem><Link href="/TermsService">Terms of Service</Link></LinkItem>
           </LinksList>
         </FooterSection>
 

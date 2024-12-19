@@ -14,6 +14,10 @@ import Chat from "../Pages/Messaging";
 import Subscription from "../Pages/Subscription";
 import SearchMatchmaking from "../Pages/SearchMatchmaking";
 import PaymentPage from "../Pages/PaymentPage";
+import FaqPage from "../Pages/FaqPage";
+import OurService from "../Pages/OurService";
+import PrivacyPolicy from "../Pages/PrivacyPolicy";
+import TermsService from "../Pages/TermsService";
 
 
 
@@ -40,6 +44,13 @@ const AppRouter = () => {
          <Route path = "/subscription" element = {<Subscription/>}/>
          <Route path = "/searchmatchmaking" element ={<SearchMatchmaking />}/>
          <Route path = "/payment" element = {<PaymentPage />}/>
+
+
+         <Route path="/OurService" element={<OurService />}  />
+         <Route path="/payment" element={<PaymentPage />} />
+         <Route path="/faqpage" element={<FaqPage/>} />
+         <Route path="/PrivacyPolicy" element={<PrivacyPolicy/>}/>
+         <Route path ="/TermsService" element={<TermsService/>}/>
 
 
          {/* <Route path = "/supportchat" element ={<SupportChat />}/> */}
