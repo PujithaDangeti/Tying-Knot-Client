@@ -55,7 +55,7 @@ const Buttons = styled.div`
 
 const Button = styled.button`
   padding: 10px 20px;
-  background-color: #4caf50;
+  background-color:#ff7f50;
   color: white;
   border: none;
   border-radius: 4px;
@@ -63,7 +63,7 @@ const Button = styled.button`
   font-size: 1em;
   
   &:hover {
-    background-color: #45a049;
+    background-color:#ff7f50;
   }
 
   &:disabled {
@@ -185,7 +185,7 @@ function Form() {
       <h2>Sign-Up Form</h2>
       <form onSubmit={addProfile}>
         <FieldSet>
-          <Legend>Personal Details</Legend>
+          <Legend>User Details</Legend>
 
           <Field>
             <Label>Name:</Label>

@@ -201,9 +201,10 @@ const Input = styled.input`
   border: 1px solid #cccccc;
   border-radius: 4px;
   outline: none;
+  width: 340px;
 
   &:focus {
-    border-color: #007bff;
+    border-color:rgb(231, 19, 19);
   }
 `;
 
@@ -211,13 +212,13 @@ const Button = styled.button`
   padding: 0.8rem;
   font-size: 1rem;
   color: #ffffff;
-  background-color: rgb(41, 179, 160);
+  background-color: #ff7f50;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 
   &:hover {
-    background-color: rgb(31, 159, 140);
+    background-color: #ff7f50;
   }
 
   &:disabled {
@@ -251,16 +252,16 @@ const ShowPasswordToggle = styled.span`
   }
 `;
 
-const ForgotPasswordLink = styled.a`
-  color:rgb(2, 2, 2);
-  text-align: center;
-  text-decoration: none;
-  font-size: 0.9rem;
+// const ForgotPasswordLink = styled.a`
+//   color:rgb(2, 2, 2);
+//   text-align: center;
+//   text-decoration: none;
+//   font-size: 0.9rem;
 
-  &:hover {
-    text-decoration: underline;
-  }
-`;
+//   &:hover {
+//     text-decoration: underline;
+//   }
+// `;
 
 // Login Component
 function Login() {
@@ -339,7 +340,7 @@ function Login() {
             {showPassword ? "Hide" : "Show"}
           </ShowPasswordToggle>
         </div>
-        <ForgotPasswordLink href="/forgot-password">Forgot Password?</ForgotPasswordLink>
+        {/* <ForgotPasswordLink href="/forgot-password">Forgot Password?</ForgotPasswordLink> */}
         <Button type="submit">Login</Button>
       </LoginForm>
       {message && <Message success={message === "Login Successful!"}>{message}</Message>}
