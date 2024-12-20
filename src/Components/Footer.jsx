@@ -106,7 +106,7 @@ const FooterBottom = styled.div`
 `;
 
 
-const Footer = () => {
+const footer = () => {
   const [email, setEmail] = useState('');
 
   const handleEmailChange = (event) => {
@@ -177,4 +177,4 @@ const Footer = () => {
 
 
 
-export default Footer;
+export default footer;
