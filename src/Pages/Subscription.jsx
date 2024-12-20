@@ -100,7 +100,7 @@ const Subscription = () => {
     {
       id: 1,
       name: 'Basic Plan',
-      price: '₹999',
+      price: '₹500',
       description: 'Basic access to search and view profiles, limited messaging.',
       benefits: ['Profile Viewing', 'Limited Messaging', 'Basic Support'],
     },

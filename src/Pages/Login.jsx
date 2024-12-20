@@ -170,7 +170,8 @@ import styled from 'styled-components';
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from 'react-router-dom';
 
-const API_URL = "http://localhost:3000/MYProfile";
+const API_URL = "https://tyingknots-serverside-2.onrender.com/Profiles";
+// const API_URL = "http://localhost:3000/Profiles";
 
 // Styled Components
 const LoginContainer = styled.div`

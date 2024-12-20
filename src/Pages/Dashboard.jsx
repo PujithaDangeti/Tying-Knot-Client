@@ -284,7 +284,7 @@ const Dashboard = () => {
       <Sidebar open={menuOpen}>
         <SidebarLink to="/profile">My Profile</SidebarLink>
         <SidebarLink to="/supportchat">SupportChat</SidebarLink> 
-         <SidebarLink to="/settings">Settings</SidebarLink>
+         {/* <SidebarLink to="/settings">Settings</SidebarLink> */}
         <button
           onClick={handleLogout}
           style={{
