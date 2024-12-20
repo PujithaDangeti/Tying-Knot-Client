@@ -6,8 +6,8 @@ import axios from "axios";
 import styled from "styled-components";
 
 
-const API_URL = "https://tyingknots-serverside-2.onrender.com/Profiles";
-// const API_URL = "http://localhost:3000/Profiles";
+// const API_URL = "https://tyingknots-serverside-2.onrender.com/Profiles";
+const API_URL = "http://localhost:3000/Profiles";
 
 
 // Styled Components
