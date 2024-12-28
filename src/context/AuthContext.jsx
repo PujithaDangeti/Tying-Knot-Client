@@ -1,5 +1,7 @@
 import React, { createContext, useState, useContext } from "react";
 
+
+
 // Create Context
 const AuthContext = createContext();
 
@@ -16,4 +18,5 @@ export const AuthProvider = ({ children }) => {
 
 // Custom Hook for Auth
 export const useAuth = () => useContext(AuthContext);
+
 
