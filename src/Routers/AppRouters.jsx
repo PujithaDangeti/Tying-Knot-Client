@@ -94,7 +94,9 @@ import FaqPage from "../Pages/FaqPage";
 import OurService from "../Pages/OurService";
 import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsService from "../Pages/TermsService";
+
 import ProtectedRoute from "../Components/ProtectedRoute"; // Import the ProtectedRoute
+
 
 const AppRouter = () => {
   return (
@@ -106,6 +108,10 @@ const AppRouter = () => {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/contact" element={<Contact />} />
+
+          
+
+          
 
           {/* Protected Routes */}
           <Route

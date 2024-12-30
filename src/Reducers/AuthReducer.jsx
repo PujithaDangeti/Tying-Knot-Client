@@ -1,5 +1,5 @@
 // Define the reducer for managing authentication state
-const authReducer = (state, action) => {
+const AuthReducer = (state, action) => {
     switch (action.type) {
       case "LOGIN":
         return { ...state, isAuthenticated: true, user: action.payload };
@@ -12,5 +12,18 @@ const authReducer = (state, action) => {
     }
   };
   
-  export default authReducer;
+  export default AuthReducer;
   
+
+// const AuthReducer = (state, action) => {
+//   switch (action.type) {
+//     case "LOGIN":
+//       return { isAuthenticated: true, user: action.payload };
+//     case "LOGOUT":
+//       return { isAuthenticated: false, user: null };
+//     default:
+//       return state;
+//   }
+// };
+
+// export default AuthReducer;
