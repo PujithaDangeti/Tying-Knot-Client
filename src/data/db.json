@@ -37,6 +37,34 @@
       "email": "sathvika@gmail.com",
       "password": "Sathvika@123",
       "confirmpassword": "Sathvika@123"
+    },
+    {
+      "id": "9d2b",
+      "name": "charan",
+      "email": "cha@gmail.com",
+      "password": "charan@121",
+      "confirmpassword": "charan@121"
+    },
+    {
+      "id": "ce2c",
+      "name": "supriyad",
+      "email": "supriyas@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": "bf98",
+      "name": "santosh",
+      "email": "supriyas@gmail.com",
+      "password": "4545454",
+      "confirmpassword": "4545454"
+    },
+    {
+      "id": "c71f",
+      "name": "Sathvika",
+      "email": "sathvikavijju@gmail.com",
+      "password": "Sathvika@123",
+      "confirmpassword": "Sathvika@123"
     }
   ]
 }

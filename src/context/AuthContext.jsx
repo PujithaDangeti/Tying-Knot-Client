@@ -1,25 +1,3 @@
-// import React, { createContext, useState, useContext } from "react";
-
-
-
-// // Create Context
-// const AuthContext = createContext();
-
-// // Provider Component
-// export const AuthProvider = ({ children }) => {
-//   const [isLoggedIn, setIsLoggedIn] = useState(false); // Login State
-
-//   return (
-//     <AuthContext.Provider value={{ isLoggedIn, setIsLoggedIn }}>
-//       {children}
-//     </AuthContext.Provider>
-//   );
-// };
-
-// // Custom Hook for Auth
-// export const useAuth = () => useContext(AuthContext);
-
-
 import React, { createContext, useState, useEffect, useContext } from "react";
 
 // Create Context
@@ -47,3 +25,48 @@ export const AuthProvider = ({ children }) => {
 
 // Custom Hook for Auth
 export const useAuth = () => useContext(AuthContext);
+
+
+//Testing
+
+
+// import React, { createContext, useState, useEffect, useContext } from "react";
+
+// const AuthContext = createContext();
+
+// export const AuthProvider = ({ children }) => {
+//   const [user, setUser] = useState(() => {
+//     const storedUser = localStorage.getItem("user");
+//     return storedUser ? JSON.parse(storedUser) : null;
+//   });
+
+//   const [isLoggedIn, setIsLoggedIn] = useState(() => !!localStorage.getItem("isLoggedIn"));
+
+//   useEffect(() => {
+//     if (user) {
+//       localStorage.setItem("user", JSON.stringify(user));
+//     } else {
+//       localStorage.removeItem("user");
+//     }
+//   }, [user]);
+
+//   const login = (userData) => {
+//     setUser(userData);
+//     setIsLoggedIn(true);
+//     localStorage.setItem("isLoggedIn", true);
+//   };
+
+//   const logout = () => {
+//     setUser(null);
+//     setIsLoggedIn(false);
+//     localStorage.clear();
+//   };
+
+//   return (
+//     <AuthContext.Provider value={{ user, isLoggedIn, login, logout }}>
+//       {children}
+//     </AuthContext.Provider>
+//   );
+// };
+
+// export const useAuth = () => useContext(AuthContext);

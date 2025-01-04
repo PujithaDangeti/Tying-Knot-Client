@@ -16,3 +16,27 @@ const ProtectedRoute = ({ children }) => {
 };
 
 export default ProtectedRoute;
+
+
+//Testing
+
+
+// import React from "react";
+// import { Navigate } from "react-router-dom";
+// import { useAuth } from "../context/AuthContext";
+
+// const ProtectedRoute = ({ children, requiredPlan }) => {
+//   const { isLoggedIn, user } = useAuth();
+
+//   if (!isLoggedIn) {
+//     return <Navigate to="/login" replace />;
+//   }
+
+//   if (requiredPlan && (!user || user.subscription !== requiredPlan)) {
+//     return <Navigate to="/subscription" replace />;
+//   }
+
+//   return children;
+// };
+
+// export default ProtectedRoute;

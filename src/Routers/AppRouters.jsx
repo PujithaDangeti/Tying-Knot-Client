@@ -130,14 +130,14 @@ const AppRouter = () => {
               </ProtectedRoute>
             }
           />
-          <Route
-            path="/profilemanagement"
-            element={
-              <ProtectedRoute>
-                <ProfileManagement />
-              </ProtectedRoute>
-            }
-          />
+         <Route
+  path="/profilemanagement"
+  element={
+    <ProtectedRoute requiredPlan="Basic">
+      <ProfileManagement />
+    </ProtectedRoute>
+  }
+/>
           <Route
             path="/profile/:id"
             element={
@@ -147,13 +147,13 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/chat"
-            element={
-              <ProtectedRoute>
-                <Chat />
-              </ProtectedRoute>
-            }
-          />
+  path="/chat"
+  element={
+    <ProtectedRoute requiredPlan="Elite">
+      <Chat />
+    </ProtectedRoute>
+  }
+/>
           <Route
             path="/subscription"
             element={
@@ -163,13 +163,13 @@ const AppRouter = () => {
             }
           />
           <Route
-            path="/searchmatchmaking"
-            element={
-              <ProtectedRoute>
-                <SearchMatchmaking />
-              </ProtectedRoute>
-            }
-          />
+  path="/searchmatchmaking"
+  element={
+    <ProtectedRoute requiredPlan="Premium">
+      <SearchMatchmaking />
+    </ProtectedRoute>
+  }
+/>
           <Route
             path="/payment"
             element={
