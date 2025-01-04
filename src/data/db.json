@@ -30,6 +30,13 @@
       "email": "keer@gmail.com",
       "password": "123456",
       "confirmpassword": "123456"
+    },
+    {
+      "id": "8a78",
+      "name": "Sathvika",
+      "email": "sathvika@gmail.com",
+      "password": "Sathvika@123",
+      "confirmpassword": "Sathvika@123"
     }
   ]
 }
