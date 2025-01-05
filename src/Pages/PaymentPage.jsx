@@ -39,7 +39,7 @@ const PaymentPage = () => {
 
   const handlePayment = (method) => {
     // Here, you can implement logic to redirect to the respective payment gateway
-    alert(`Proceeding with ${method}`);
+    alert('Proceeding with ${method}');
     // Example: redirect to the respective payment gateway URL
     // window.location.href = 'payment-gateway-url';
   };

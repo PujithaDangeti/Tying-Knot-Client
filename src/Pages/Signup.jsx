@@ -528,90 +528,314 @@
 
 //Testing
 
+// import { useState } from "react";
+// import { useNavigate } from "react-router-dom";
+// import axios from "axios";
+// import styled from "styled-components";
+
+// const API_URL = "http://localhost:3000/Profiles";
+
+// // Styled Components (same as your original code)
+// const Container = styled.div`
+//   width: 100%;
+//   max-width: 500px;
+//   margin: 0 auto;
+//   padding: 20px;
+// `;
+
+// const FieldSet = styled.fieldset`
+//   border: 1px solid #ccc;
+//   padding: 20px;
+//   border-radius: 8px;
+// `;
+
+// const Legend = styled.legend`
+//   font-size: 1.5em;
+//   margin-bottom: 10px;
+// `;
+
+// const Field = styled.div`
+//   margin-bottom: 15px;
+// `;
+
+// const Label = styled.label`
+//   font-size: 1em;
+//   display: block;
+//   margin-bottom: 5px;
+// `;
+
+// const Input = styled.input`
+//   width: 90%;
+//   padding: 10px;
+//   font-size: 1em;
+//   border: 1px solid #ccc;
+//   border-radius: 4px;
+// `;
+
+// const Buttons = styled.div`
+//   display: flex;
+//   justify-content: space-between;
+//   gap: 10px;
+// `;
+
+// const Button = styled.button`
+//   padding: 10px 20px;
+//   background-color: #ff7f50;
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   font-size: 1em;
+
+//   &:hover {
+//     background-color: #ff7f50;
+//   }
+
+//   &:disabled {
+//     background-color: #ddd;
+//     cursor: not-allowed;
+//   }
+// `;
+
+// const ToggleButton = styled(Button)`
+//   background-color: #ff7f50;
+//   margin-left: 10px;
+
+//   &:hover {
+//     background-color: #ff7f50;
+//   }
+// `;
+
+// const Error = styled.span`
+//   color: red;
+//   font-size: 0.9em;
+//   margin-top: 5px;
+//   display: block;
+// `;
+
+// function Form() {
+//   const [newProfile, setNewProfile] = useState({
+//     name: "",
+//     email: "",
+//     password: "",
+//     confirmpassword: "",
+//   });
+//   const [errors, setErrors] = useState({});
+//   const [showPassword, setShowPassword] = useState(false);
+//   const navigate = useNavigate();
+
+//   const validateProfile = (profile) => {
+//     const newErrors = {};
+//     if (!profile.name.trim()) newErrors.name = "Name is required.";
+//     if (!profile.email.trim()) {
+//       newErrors.email = "Email is required.";
+//     } else if (
+//       !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email.trim())
+//     ) {
+//       newErrors.email = "Invalid email format.";
+//     }
+//     if (!profile.password.trim()) newErrors.password = "Password is required.";
+//     if (profile.password !== profile.confirmpassword)
+//       newErrors.confirmpassword = "Passwords do not match.";
+//     setErrors(newErrors);
+//     return Object.keys(newErrors).length === 0;
+//   };
+
+//   const checkEmailUnique = async (email) => {
+//     try {
+//       const response = await axios.get(API_URL);
+//       const profiles = response.data || [];
+//       const emailExists = profiles.some((profile) => profile.email === email);
+//       if (emailExists) {
+//         setErrors((prevErrors) => ({
+//           ...prevErrors,
+//           email: "This email is already registered.",
+//         }));
+//         return false;
+//       }
+//       return true;
+//     } catch (error) {
+//       console.error("Error checking email uniqueness:", error);
+//       return false;
+//     }
+//   };
+
+//   const handleSignUp = async (event) => {
+//     event.preventDefault();
+//     if (!validateProfile(newProfile)) return;
+
+//     const isUnique = await checkEmailUnique(newProfile.email);
+//     if (!isUnique) return;
+
+//     try {
+//       await axios.post(API_URL, newProfile);
+//       localStorage.setItem("username", newProfile.name);
+//       navigate("/dashboard"); // Navigate to the dashboard
+//     } catch (error) {
+//       console.error("Error signing up:", error);
+//     }
+//   };
+
+//   return (
+//     <Container>
+//       <form onSubmit={handleSignUp}>
+//         <FieldSet>
+//           <Legend>Sign-Up Form</Legend>
+//           <Field>
+//             <Label>Name:</Label>
+//             <Input
+//               type="text"
+//               value={newProfile.name}
+//               onChange={(e) =>
+//                 setNewProfile({ ...newProfile, name: e.target.value })
+//               }
+//             />
+//             {errors.name && <Error>{errors.name}</Error>}
+//           </Field>
+//           <Field>
+//             <Label>Email:</Label>
+//             <Input
+//               type="email"
+//               value={newProfile.email}
+//               onChange={(e) =>
+//                 setNewProfile({ ...newProfile, email: e.target.value })
+//               }
+//             />
+//             {errors.email && <Error>{errors.email}</Error>}
+//           </Field>
+//           <Field>
+//             <Label>Password:</Label>
+//             <div style={{ display: "flex", alignItems: "center" }}>
+//               <Input
+//                 type={showPassword ? "text" : "password"}
+//                 value={newProfile.password}
+//                 onChange={(e) =>
+//                   setNewProfile({ ...newProfile, password: e.target.value })
+//                 }
+//               />
+//               <ToggleButton
+//                 type="button"
+//                 onClick={() => setShowPassword(!showPassword)}
+//               >
+//                 {showPassword ? "Hide" : "Show"}
+//               </ToggleButton>
+//             </div>
+//             {errors.password && <Error>{errors.password}</Error>}
+//           </Field>
+//           <Field>
+//             <Label>Confirm Password:</Label>
+//             <Input
+//               type={showPassword ? "text" : "password"}
+//               value={newProfile.confirmpassword}
+//               onChange={(e) =>
+//                 setNewProfile({ ...newProfile, confirmpassword: e.target.value })
+//               }
+//             />
+//             {errors.confirmpassword && <Error>{errors.confirmpassword}</Error>}
+//           </Field>
+//           <Buttons>
+//             <Button type="submit">Sign-Up</Button>
+//           </Buttons>
+//         </FieldSet>
+//       </form>
+//     </Container>
+//   );
+// }
+
+// export default Form;
+
+
+
+
+//mail testing
+
+
+
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import styled from "styled-components";
+import emailjs from "emailjs-com"; // Import EmailJS
 
-const API_URL = "http://localhost:3000/Profiles";
-
-// Styled Components (same as your original code)
+// Styled Components
 const Container = styled.div`
-  width: 100%;
   max-width: 500px;
-  margin: 0 auto;
-  padding: 20px;
+  margin: 50px auto;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 const FieldSet = styled.fieldset`
-  border: 1px solid #ccc;
-  padding: 20px;
-  border-radius: 8px;
+  border: none;
+  padding: 0;
 `;
 
 const Legend = styled.legend`
-  font-size: 1.5em;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
 `;
 
 const Field = styled.div`
-  margin-bottom: 15px;
+  margin-bottom: 1.5rem;
 `;
 
 const Label = styled.label`
-  font-size: 1em;
   display: block;
-  margin-bottom: 5px;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
 `;
 
 const Input = styled.input`
-  width: 90%;
-  padding: 10px;
-  font-size: 1em;
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 5px;
+`;
+
+const ToggleButton = styled.button`
+  margin-left: 10px;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+const Error = styled.div`
+  color: #dc3545;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
 `;
 
 const Buttons = styled.div`
-  display: flex;
-  justify-content: space-between;
-  gap: 10px;
+  text-align: center;
 `;
 
 const Button = styled.button`
-  padding: 10px 20px;
-  background-color: #ff7f50;
+  padding: 0.8rem 1.5rem;
+  background-color: #007bff;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 5px;
+  font-size: 1rem;
   cursor: pointer;
-  font-size: 1em;
 
   &:hover {
-    background-color: #ff7f50;
-  }
-
-  &:disabled {
-    background-color: #ddd;
-    cursor: not-allowed;
+    background-color: #0056b3;
   }
 `;
 
-const ToggleButton = styled(Button)`
-  background-color: #ff7f50;
-  margin-left: 10px;
-
-  &:hover {
-    background-color: #ff7f50;
-  }
-`;
-
-const Error = styled.span`
-  color: red;
-  font-size: 0.9em;
-  margin-top: 5px;
-  display: block;
-`;
+const API_URL = "http://localhost:3000/Profiles";
 
 function Form() {
   const [newProfile, setNewProfile] = useState({
@@ -629,9 +853,7 @@ function Form() {
     if (!profile.name.trim()) newErrors.name = "Name is required.";
     if (!profile.email.trim()) {
       newErrors.email = "Email is required.";
-    } else if (
-      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email.trim())
-    ) {
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(profile.email.trim())) {
       newErrors.email = "Invalid email format.";
     }
     if (!profile.password.trim()) newErrors.password = "Password is required.";
@@ -660,6 +882,24 @@ function Form() {
     }
   };
 
+  const sendGreetingEmail = (profile) => {
+    const templateParams = {
+      name: profile.name,
+      email: profile.email,
+    };
+
+    emailjs
+      .send("service_0vbgauu", "template_ppli7yr", templateParams, "s7V4n4J3dmBJf4V_Y")
+      .then(
+        (response) => {
+          console.log("SUCCESS!", response.status, response.text);
+        },
+        (error) => {
+          console.error("FAILED...", error);
+        }
+      );
+  };
+
   const handleSignUp = async (event) => {
     event.preventDefault();
     if (!validateProfile(newProfile)) return;
@@ -669,8 +909,9 @@ function Form() {
 
     try {
       await axios.post(API_URL, newProfile);
+      sendGreetingEmail(newProfile); // Send the greeting email
       localStorage.setItem("username", newProfile.name);
-      navigate("/dashboard"); // Navigate to the dashboard
+      navigate("/dashboard");
     } catch (error) {
       console.error("Error signing up:", error);
     }
