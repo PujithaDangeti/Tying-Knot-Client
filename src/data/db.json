@@ -65,6 +65,13 @@
       "email": "sathvikavijju@gmail.com",
       "password": "Sathvika@123",
       "confirmpassword": "Sathvika@123"
+    },
+    {
+      "id": "71ad",
+      "name": "Keerthana",
+      "email": "keert@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
     }
   ]
 }
