@@ -106,7 +106,7 @@ const ProfileManagement = () => {
   useEffect(() => {
     const fetchProfiles = async () => {
       try {
-        const response = await fetch("https://mocki.io/v1/fb5bcf7a-adf3-4ed7-9555-fad92443af6c");
+        const response = await fetch("https://mocki.io/v1/620e8504-d476-4ad2-b33f-eeca66ad234d");
         if (!response.ok) throw new Error("Failed to fetch profiles");
 
         const data = await response.json();
@@ -133,7 +133,7 @@ const ProfileManagement = () => {
             <ProfileImage src={getProfileImage(profile.id)} alt={profile.name || "Profile Image"} />
             <ProfileInfo>
               <ProfileName>{profile.name || "No Name Provided"}</ProfileName>
-              <ProfileDetails>{profile.details || "No details available"}</ProfileDetails>
+              {/* <ProfileDetails>{profile.details || "No details available"}</ProfileDetails> */}
               <ViewProfileButton to={`/profile/${profile.id}`}>
                 View Profile
               </ViewProfileButton>
