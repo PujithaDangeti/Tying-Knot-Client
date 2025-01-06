@@ -96,6 +96,7 @@ import PrivacyPolicy from "../Pages/PrivacyPolicy";
 import TermsService from "../Pages/TermsService";
 
 import ProtectedRoute from "../Components/ProtectedRoute"; // Import the ProtectedRoute
+import PremiumProfiles from "../Pages/PremiumProfiles";
 
 
 const AppRouter = () => {
@@ -175,6 +176,15 @@ const AppRouter = () => {
             element={
               <ProtectedRoute>
                 <PaymentPage />
+              </ProtectedRoute>
+            }
+          />
+
+          <Route
+            path="/premium-profiles"
+            element={
+              <ProtectedRoute>
+                <PremiumProfiles />
               </ProtectedRoute>
             }
           />

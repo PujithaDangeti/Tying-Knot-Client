@@ -1,75 +1,7 @@
-// import React, { useState } from 'react';
-// import styled from 'styled-components';
-// import QRCode from 'react-qr-code'; // You need to install this package using npm install react-qr-code
-
-// // Styled Components
-
-// const PaymentContainer = styled.div`
-//   text-align: center;
-//   padding: 40px;
-// `;
-
-// const PaymentMethodsContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   gap: 20px;
-//   margin-top: 20px;
-// `;
-
-// const PaymentButton = styled.button`
-//   background-color: #ff7f50;
-//   color: white;
-//   padding: 15px 30px;
-//   border: none;
-//   font-size: 1.2rem;
-//   cursor: pointer;
-//   transition: background-color 0.3s ease;
-
-//   &:hover {
-//     background-color: rgb(143, 40, 134);
-//   }
-// `;
-
-// const QRCodeContainer = styled.div`
-//   margin-top: 20px;
-// `;
-
-// const PaymentPage = () => {
-//   const [paymentStatus, setPaymentStatus] = useState('');
-
-//   const handlePayment = (method) => {
-//     // Here, you can implement logic to redirect to the respective payment gateway
-//     alert('Proceeding with ${method}');
-//     // Example: redirect to the respective payment gateway URL
-//     // window.location.href = 'payment-gateway-url';
-//   };
-
-
-
-//   const upiPaymentLink = "upi://pay?pa=tknots@upi&pn=Your%20Name&mc=1234&tid=12345&url=https://your-website.com";
-
-//   return (
-//     <PaymentContainer>
-//       <h2>Complete Your Payment</h2>
-      
-
-//       {/* Display QR Code for UPI Payment */}
-//       <QRCodeContainer>
-//         <h3>Or pay via UPI (Scan the QR Code)</h3>
-//         <QRCode value={upiPaymentLink} />
-//       </QRCodeContainer>
-
-//       {paymentStatus && <p>{paymentStatus}</p>}
-//     </PaymentContainer>
-//   );
-// };
-
-// export default PaymentPage;
-
-
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import QRCode from 'react-qr-code'; // Install using: npm install react-qr-code
+import { useNavigate } from 'react-router-dom'; // Install using: npm install react-router-dom
 
 // Styled Components
 const PaymentContainer = styled.div`
@@ -109,9 +41,23 @@ const BackButton = styled.button`
 
 const PaymentPage = () => {
   const [paymentStatus, setPaymentStatus] = useState('');
+  const [isQRVisible, setIsQRVisible] = useState(true);
+  const navigate = useNavigate();
 
   // UPI Payment Details
   const upiPaymentLink = 'pujithadangeti@oksbi';
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsQRVisible(false);
+      setPaymentStatus('Payment Successful. Redirecting to premium profiles...');
+      setTimeout(() => {
+        navigate('/premium-profiles'); // Redirect to premium profiles
+      }, 3000);
+    }, 10000); // 20 seconds timer
+
+    return () => clearTimeout(timer); // Cleanup on unmount
+  }, [navigate]);
 
   const handleBack = () => {
     window.history.back();
@@ -123,18 +69,21 @@ const PaymentPage = () => {
       <p>Scan the QR Code below or use the UPI ID to make the payment.</p>
 
       {/* Display QR Code */}
-      <QRCodeContainer>
-        <QRCode value={upiPaymentLink} size={256} />
-      </QRCodeContainer>
+      {isQRVisible ? (
+        <QRCodeContainer>
+          <QRCode value={upiPaymentLink} size={256} />
+        </QRCodeContainer>
+      ) : (
+        <PaymentStatus>{paymentStatus}</PaymentStatus>
+      )}
 
       {/* Display UPI ID */}
-      <UpiId>
-        <strong>UPI ID:</strong> <br />
-        <span>pujithadangeti@oksbi</span>
-      </UpiId>
-
-      {/* Payment Status */}
-      {paymentStatus && <PaymentStatus>{paymentStatus}</PaymentStatus>}
+      {isQRVisible && (
+        <UpiId>
+          <strong>UPI ID:</strong> <br />
+          <span>pujithadangeti@oksbi</span>
+        </UpiId>
+      )}
 
       {/* Back Button */}
       <BackButton onClick={handleBack}>Go Back</BackButton>
