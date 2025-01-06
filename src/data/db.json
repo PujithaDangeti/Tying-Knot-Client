@@ -79,6 +79,13 @@
       "email": "rrpinnamraju@gmail.com",
       "password": "123456789",
       "confirmpassword": "123456789"
+    },
+    {
+      "id": "e775",
+      "name": "Bhaskar",
+      "email": "alluribhaskar007@gmail.com",
+      "password": "123456789",
+      "confirmpassword": "123456789"
     }
   ]
 }

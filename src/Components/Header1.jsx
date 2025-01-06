@@ -254,7 +254,7 @@ const Header1 = ({ onLogout }) => {
         <NavLink to="/profile">My Profile</NavLink>
         <NavLink to="/profilemanagement">Profile Management</NavLink>
         <NavLink to="/searchmatchmaking">Search Matchmaking</NavLink>
-        <NavLink to="/chat">Chat</NavLink>
+        {/* <NavLink to="/chat">Chat</NavLink> */}
         <NavLink to="/subscription">Subscription</NavLink>
         <LogoutButton onClick={handleLogout}>Logout</LogoutButton>
       </NavLinks>

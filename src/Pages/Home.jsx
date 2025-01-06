@@ -202,7 +202,7 @@
 
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import image1 from "../assets/pic7.jpg"; // Replace with your header image path
+import image1 from "../assets/image14.jpg"; // Replace with your header image path
 
 // Keyframes for sliding animation
 const slideIn = keyframes`
@@ -234,7 +234,7 @@ const HeaderContainer = styled.header`
   background-position: center;
   text-align: center;
   color: white;
-  padding: 200px 20px;
+  padding: 320px 20px;
   animation: ${slideIn} 1s ease-out forwards; /* Slide effect for the whole container */
 `;
 

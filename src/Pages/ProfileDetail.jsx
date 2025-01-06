@@ -54,9 +54,9 @@ const ProfileDetail = () => {
   useEffect(() => {
     const fetchProfile = async () => {
       try {
-        // const response = await fetch("https://mocki.io/v1/1d28159d-968f-4f47-b983-f684f1615340");
+        const response = await fetch("https://mocki.io/v1/1d28159d-968f-4f47-b983-f684f1615340");
 
-        const response = await fetch("");
+       
         if (!response.ok) {
           throw new Error("Failed to fetch profile details");
         }

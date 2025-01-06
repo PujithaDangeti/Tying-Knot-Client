@@ -114,7 +114,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 
 const HeaderContainer = styled.header`
-  background-color: #ff7f50;
+  background-color:rgb(0, 0, 0);
   padding: 15px 20px;
   display: flex;
   justify-content: space-between;

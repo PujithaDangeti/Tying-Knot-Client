@@ -79,7 +79,7 @@ const Container = styled.div`
   max-width: 600px;
   margin: 0 auto;
   font-family: Arial, sans-serif;
-  padding: 20px;
+  padding: 150px;
 `;
 
 const Title = styled.h2`
