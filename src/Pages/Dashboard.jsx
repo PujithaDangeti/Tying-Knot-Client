@@ -104,7 +104,7 @@ const fadeIn = keyframes`
 
 const DashboardContainer = styled.div`
   height: 100vh;
-  background: url(${bgImage}) center/cover no-repeat;
+  background: url("https://img.freepik.com/premium-photo/decorative-toran-hindu-doorway-hang-traditional-indian-illustration-concept_1279521-17388.jpg?w=1060") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;

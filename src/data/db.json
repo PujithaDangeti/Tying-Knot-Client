@@ -86,6 +86,48 @@
       "email": "alluribhaskar007@gmail.com",
       "password": "123456789",
       "confirmpassword": "123456789"
+    },
+    {
+      "id": "be21",
+      "name": "Senior",
+      "email": "pujithadangeti0408@gmail.com",
+      "password": "212345",
+      "confirmpassword": "212345"
+    },
+    {
+      "id": "2c40",
+      "name": "Ramesh",
+      "email": "rameshchowdary317@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": "41d9",
+      "name": "Manaswini",
+      "email": "manaswinimula10@gmail.com",
+      "password": "123456",
+      "confirmpassword": "123456"
+    },
+    {
+      "id": "eb1a",
+      "name": "Keerthana",
+      "email": "keerthanasjs123@gmail.com",
+      "password": "123456789",
+      "confirmpassword": "123456789"
+    },
+    {
+      "id": "c677",
+      "name": "srikanth",
+      "email": "nivarthi.srikanth@gmail.com",
+      "password": "12345678",
+      "confirmpassword": "12345678"
+    },
+    {
+      "id": "167b",
+      "name": "Vamsi",
+      "email": "vamsikamma999@gmail.com",
+      "password": "Vamsi@2001",
+      "confirmpassword": "Vamsi@2001"
     }
   ]
 }

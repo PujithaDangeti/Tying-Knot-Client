@@ -239,7 +239,7 @@ const Header1 = ({ onLogout }) => {
     if (onLogout) {
       onLogout(); // Clear authentication state
     }
-    navigate("/login"); // Redirect to login page
+    navigate("/home"); // Redirect to login page
   };
 
   return (
