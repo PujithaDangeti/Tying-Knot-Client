@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const API_URL = 'https://mocki.io/v1/9000fb5f-563f-4347-b901-fc7f1f483c8b'; // Replace with your mock API URL
+//const API_URL = 'https://mocki.io/v1/9000fb5f-563f-4347-b901-fc7f1f483c8b'; // Replace with your mock API URL
 
 const Messaging = () => {
   const location = useLocation();
@@ -21,7 +21,7 @@ const Messaging = () => {
 
   const fetchChat = async () => {
     try {
-      const response = await axios.get(API_URL);
+      const response = await axios.get();
       const chatData = response.data.chat.find(
         (chat) =>
           chat.sender === profile.name || chat.receiver === profile.name
@@ -90,6 +90,7 @@ const Messaging = () => {
     };
 
     return replies[message.toLowerCase()] || "Telidhu, gurtuledu!!!! Marchipoya";
+   
   };
 
   if (!profile) return null;

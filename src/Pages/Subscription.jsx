@@ -2,8 +2,6 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-// Styled Components
-
 const SubscriptionContainer = styled.div`
   text-align: center;
   padding: 40px;
@@ -81,7 +79,7 @@ const SubscribeButton = styled.button`
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color:rgb(143, 40, 134);
+    background-color:rgb(226, 126, 12);
   }
 `;
 
@@ -129,7 +127,6 @@ const Subscription = () => {
       const selectedPlan = plans.find((plan) => plan.id === activePlan);
       setSuccessMessage(`You have selected the ${selectedPlan.name}. Redirecting to payment...`);
 
-      // Simulate payment gateway redirection
       setTimeout(() => {
        navigate('/payment');
       }, 2000);

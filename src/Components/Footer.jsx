@@ -75,29 +75,6 @@ const SocialLink = styled.a`
   }
 `;
 
-const NewsletterSection = styled.div`
-  margin-top: 15px; /* Reduced margin */
-`;
-
-const NewsletterInput = styled.input`
-  padding: 8px; /* Reduced padding */
-  width: 150px; /* Reduced width */
-  margin-right: 8px; /* Reduced margin */
-  border: 1px solid #ccc;
-  border-radius: 4px;
-`;
-
-const NewsletterButton = styled.button`
-  padding: 8px 15px; /* Reduced padding */
-  background-color: #ff5733;
-  color: #fff;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  &:hover {
-    background-color: #e64a19;
-  }
-`;
 
 const FooterBottom = styled.div`
   margin-top: 15px ; 
@@ -107,18 +84,6 @@ const FooterBottom = styled.div`
 
 
 const Footer = () => {
-  const [email, setEmail] = useState('');
-
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-
-  const handleSubscribe = (event) => {
-    event.preventDefault();
-    // Handle email subscription logic here
-    alert(`Subscribed with email: ${email}`);
-  };
-
   return (
     <FooterWrapper>
       <FooterContainer>
@@ -149,25 +114,8 @@ const Footer = () => {
             <SocialLink href="https://pinterest.com" target="_blank" rel="noopener noreferrer">Pinterest</SocialLink>
           </SocialIcons>
         </FooterSection>
-
-        {/* <FooterSection>
-          <SectionTitle>Subscribe to Our Newsletter</SectionTitle>
-          <NewsletterSection>
-            <form onSubmit={handleSubscribe}>
-              <NewsletterInput 
-                type="email" 
-                placeholder="Enter your email" 
-                value={email} 
-                onChange={handleEmailChange} 
-                required 
-              />
-              <NewsletterButton type="submit">Subscribe</NewsletterButton>
-            </form>
-          </NewsletterSection>
-        </FooterSection> */}
       </FooterContainer>
-
- 
+      
       <FooterBottom>
         <SectionText>© 2024 TyingKnot Wedding Site. All rights reserved.</SectionText>
       </FooterBottom>

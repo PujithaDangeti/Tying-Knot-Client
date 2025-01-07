@@ -54,7 +54,7 @@ const PaymentPage = () => {
       setTimeout(() => {
         navigate('/premium-profiles'); // Redirect to premium profiles
       }, 3000);
-    }, 10000); // 20 seconds timer
+    }, 15000); // 15 seconds timer
 
     return () => clearTimeout(timer); // Cleanup on unmount
   }, [navigate]);
