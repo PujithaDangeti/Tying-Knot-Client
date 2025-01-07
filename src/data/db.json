@@ -135,6 +135,13 @@
       "email": "sravya2721@gmail.com",
       "password": "Sravya@17",
       "confirmpassword": "Sravya@17"
+    },
+    {
+      "id": "9ce9",
+      "name": "khushbu",
+      "email": "khushyadv0303@gmail.com",
+      "password": "Khush@123",
+      "confirmpassword": "Khush@123"
     }
   ]
 }
